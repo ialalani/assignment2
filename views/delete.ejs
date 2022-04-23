@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Delete Books</title>
+    <style>
+      /* Style the links inside the navigation bar */
+
+      .table {
+        color: black;
+        width: 560px;
+        height: 19px;
+        padding: 28px;
+        /* margin-top: 5%; */
+      }
+
+      #box {
+        width: 590px;
+        height: 50px;
+        background-color: rgb(165, 165, 165);
+        font-size: 20px;
+        padding: 25px;
+        margin-left: 3.5in;
+      }
+      .button,
+      a {
+        color: red;
+      }
+
+      .navbar {
+        background-color: blueviolet;
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+        justify-content: center;
+      }
+
+      .navbar a {
+          float: left;
+          align-items: center;
+          color: #f2f2f2;
+          padding: 14px 16px;
+          font-size: 22px;
+}
+    </style>
+  </head>
+  <body>
+    <h1>Click to Delete a Book</h1>
+    <table class="table">
+      <% books.forEach(b => { %>
+      <tr>
+        <td>
+          <button class="button">
+            <b
+              ><a
+                href="<%=`/books/${b.id}/delete?_method=DELETE`%>"
+                onclick=" return confirm ('Would you like to delete this book?')"
+                >x</a
+              ></b
+            >
+          </button>
+          <a id="book" href="<%=`/books/${b.id}`%>"><%=b.name %></a>
+        </td>
+      </tr>
+
+      <%}); %>
+    </table>
+    <div class="navbar">
+      <a href="/home">List all Books</a>
+      <a href="/AddNewBook">Add a Book</a>
+      <a href="/DeleteABook">Delete a Book</a>
+    </div>
+  </body>
+</html>
